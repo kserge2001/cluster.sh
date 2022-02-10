@@ -17,6 +17,13 @@ net.bridge.bridge-nf-call-iptables = 1
 EOF
 sysctl --system
 
+sed -i 's/mirrorlist/#mirrorlist/g' /etc/yum.repos.d/CentOS-Linux-*
+sed -i 's|#baseurl=http://mirror.centos.org|baseurl=http://vault.centos.org|g' /etc/yum.repos.d/CentOS-Linux-*
+
+yum clean all 
+yum repolist
+
+
 dnf install -y python3-dnf-plugin-versionlock yum-utils git
 
 yum-config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo
