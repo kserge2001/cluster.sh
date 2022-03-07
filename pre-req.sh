@@ -67,4 +67,6 @@ dnf install -y kubeadm-1.21.0-00 kubelet-1.21.0-00 kubectl-1.21.0-00 --disableex
 dnf versionlock kubeadm-* kubelet-* kubectl-* docker-ce*
 
 systemctl enable --now kubelet
+echo "Please wait... Your system will now be rebooted. Wait for 2 minutes and then relogin by opening a duplication session"
+sleep 5
 reboot
