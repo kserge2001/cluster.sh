@@ -1,5 +1,8 @@
 #!/bin/bash
 
+apt-get install -y curl openssh-server vim 
+sed -e 's/^.*PermitRootLogin prohibit-password/PermitRootLogin yes/g' -i  /etc/ssh/sshd_config
+systemctl restart sshd 
 
 swapoff -a
 sed -i '/ swap / s/^\(.*\)$/#\1/g' /etc/fstab
