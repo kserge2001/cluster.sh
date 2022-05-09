@@ -43,6 +43,7 @@ sudo apt-get update
 
 sudo mkdir -p /etc/containerd
 containerd config default | sudo tee /etc/containerd/config.toml
+sed -e 's/SystemdCgroup = false/SystemdCgroup = true/g' -i /etc/containerd/config.toml
 
 systemctl daemon-reload
 sudo systemctl restart containerd
