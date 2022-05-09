@@ -3,6 +3,7 @@
 apt-get install -y curl openssh-server vim 
 sed -e 's/^.*PermitRootLogin prohibit-password/PermitRootLogin yes/g' -i  /etc/ssh/sshd_config
 systemctl restart sshd 
+systemctl disable --now ufw
 
 swapoff -a
 sed -i '/ swap / s/^\(.*\)$/#\1/g' /etc/fstab
@@ -46,14 +47,13 @@ containerd config default | sudo tee /etc/containerd/config.toml
 systemctl daemon-reload
 sudo systemctl restart containerd
 
-
 sudo apt-get update
 sudo apt-get install -y apt-transport-https ca-certificates curl
 
 sudo curl -fsSLo /usr/share/keyrings/kubernetes-archive-keyring.gpg https://packages.cloud.google.com/apt/doc/apt-key.gpg
-
-
 echo "deb [signed-by=/usr/share/keyrings/kubernetes-archive-keyring.gpg] https://apt.kubernetes.io/ kubernetes-xenial main" | sudo tee /etc/apt/sources.list.d/kubernetes.list
 
 sudo apt-get update
 sudo apt-get install -y kubelet=1.23.0-00  kubeadm=1.23.0-00  kubectl=1.23.0-00 
+
+
