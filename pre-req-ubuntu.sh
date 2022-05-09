@@ -55,5 +55,7 @@ echo "deb [signed-by=/usr/share/keyrings/kubernetes-archive-keyring.gpg] https:/
 
 sudo apt-get update
 sudo apt-get install -y kubelet=1.23.0-00  kubeadm=1.23.0-00  kubectl=1.23.0-00 
-
+echo "Please wait... Your system will now be rebooted. Wait for 2 minutes and then relogin"
+sleep 10
+reboot
 
