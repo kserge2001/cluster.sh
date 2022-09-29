@@ -1,7 +1,6 @@
 #!/bin/bash
 sudo kubectl apply -f "https://raw.githubusercontent.com/fazlurkh/pods/main/ts.yaml" >> /dev/null
-sudo kubectl taint node `kubectl get nodes --no-headers | tail -2 | awk '{print $1}'` cka=test:NoSchedule --overwrite
->> /dev/null
+sudo kubectl taint node `kubectl get nodes --no-headers | tail -2 | awk '{print $1}'` cka=test:NoSchedule --overwrite >> /dev/null
 sudo kubectl run ckaexam --image nginx  >> /dev/null
 sudo mkdir -p ~/backup
 sudo cp -p ~/.kube/config ~/backup/  >> /dev/null
