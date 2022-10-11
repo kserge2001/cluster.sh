@@ -4,7 +4,7 @@ apt-get install -y curl openssh-server vim
 sed -e 's/^.*PermitRootLogin prohibit-password/PermitRootLogin yes/g' -i  /etc/ssh/sshd_config
 systemctl restart sshd 
 systemctl disable --now ufw
-
+hostnamectl set-hostname node1.k8s
 swapoff -a
 sed -i '/ swap / s/^\(.*\)$/#\1/g' /etc/fstab
 
