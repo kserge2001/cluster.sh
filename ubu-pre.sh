@@ -1,5 +1,6 @@
 #!/bin/bash
 
+## Master nodes
 apt-get install -y curl openssh-server vim 
 sed -e 's/^.*PermitRootLogin prohibit-password/PermitRootLogin yes/g' -i  /etc/ssh/sshd_config
 systemctl restart sshd 
